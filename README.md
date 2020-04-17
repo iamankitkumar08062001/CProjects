@@ -5,6 +5,7 @@
 
 ## Description ##
 ### 1.Tic Tac Toe ###
+<!--============================================ TABLE ====================================================-->
 |S.No|Return Type|Function Name|Argument Type|Arguments/Parameters(Actual Parameters)|Purpose|
 |:--:|:---------:|:-----------:|:------------|:-------------------------------------:|-----|
 | 1  |   void    |   menu()    |    int \*   |     &choice        |To Print Menu.|
@@ -18,3 +19,6 @@
 | 9|     int   |   check_end()     |  char \*\* | game_array | This function check if the game array is full or not(Not used anymore as the check_win() function will trigger before this function). |
 | 10|    char  |   check_win()     |  char \*\*, int | game_array, A Number</br>1. 1 to trigger to check who has won, and</br>2. Any other number to check if there is a win situation| This function checks for a win situtation</br>check() functions contains the actual code to check for a win situation. |
 | 11|    int   |   check()         | char \*\*, char | game_array, sym | This function contains the actual code to check for a win situation. |
+<!--============================================ TABLE END ====================================================-->
+#### NOTES ####
+1. check() and check_win() is kept separate to make the code more readable
