@@ -4,7 +4,7 @@
 |1|Tic Tac Toe Game(Without Graphics)|
 
 ## Description ##
-### 1.Tic Tac Toe ###
+## 1.Tic Tac Toe ##
 <!--============================================ TABLE ====================================================-->
 |S.No|Return Type|Function Name|Argument Type|Arguments/Parameters(Actual Parameters)|Purpose|
 |:--:|:---------:|:-----------:|:------------|:-------------------------------------:|-----|
@@ -21,4 +21,4 @@
 | 11|    int   |   check()         | char \*\*, char | game_array, sym | This function contains the actual code to check for a win situation. |
 <!--============================================ TABLE END ====================================================-->
 #### NOTES ####
-1. check() and check_win() is kept separate to make the code more readable
+1. check() and check_win() is kept separate to make the code more readable, check() contains the actual code. 
