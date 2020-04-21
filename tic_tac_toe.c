@@ -65,7 +65,7 @@ int main()
 		function_calls(choice);
 	}
 	//End Credits
-	printf("Thank You for Playing the Game!!!\n");
+	printf("\nThank You for Playing the Game!!!\n");
 	printf("Developed By BizzareKumar\n\n");
 	//return 0 as a signature of successful termination
 	return 0;
@@ -122,12 +122,12 @@ void new_game(void)
 	player2_name=(char *)malloc(sizeof(char)*100);
 	//name_input() function call to take 
 	//player input names
-	name_input(&player1_name,&player2_name,sym);
+	name_input(&player1_name,&player2_name,&sym);
 	//game_starts
 	//toss() function is called to decide which player will
 	//start the game and assigned to "chance" variable
 	//for further use
-	int chance=_toss(player1_name,player2_name);
+	chance=_toss(player1_name,player2_name);
 	//game array is initialized and assigned a NULL pointer 
 	//as to avoid a wild pointer
 	char **game_array=NULL;
@@ -144,7 +144,7 @@ void new_game(void)
 	{
 		//run_game() function is called to input player choice to make 
 		//a move
-		run_game(&game_array,*sym,chance,player1_name,player2_name);
+		run_game(&game_array,sym,chance,player1_name,player2_name);
 		//This switch-case statement changes the chance
 		//to allow each player to take his/her turn
 		switch(chance)
@@ -160,22 +160,40 @@ void new_game(void)
 		print_game_array(game_array);
 	}
 	//----------------------while loop end--------------------------
-	//check_win() function is called to check which player has won the match
-	//when there is not a draw
-	/*switch(check_win(game_array,0) && check_end(game_array)!=1)
-	{
-		case 'O':
-				printf("Congratulations, %s has won the game!!!");
-				break;
-		case 'X':printf("Congratulations, %s has won the game!!!");
-				break;
-	}*/
 	//calls check_end() function to print a DRAW message
-	/*
-	if(check_end(game_array)==1)
+	if(check_end(game_array)==1 && check_win(game_array,1)!='0')
 	{
 		printf("\nThe match was a DRAW.!!!\n");
-	}*/
+		return;
+	}
+	//check_win() function is called to check which player has won the match
+	//when there is not a draw
+	switch(check_win(game_array,0))
+	{
+		//if check_win() function returns a winning character based on which winner is decided
+		//if "sym" variable matches the returned character then it means
+		//that player 1 won the match as he/she chose the sym character
+		//same logic for both functions
+		case 'O':if(sym=='O')
+				 {
+					 printf("Congratulations, %s has won the game!!!\n",player1_name);
+				 }
+				 else
+				 {
+					 printf("Congratulations, %s has won the game!!!\n",player2_name);
+				 }
+				 break;
+		case 'X':if(sym=='X')
+				 {
+					 printf("Congratulations, %s has won the game!!!\n",player1_name);
+				 }
+				 else
+				 {
+					 printf("Congratulations, %s has won the game!!!\n",player2_name);
+				 }
+				 break;
+	}
+	//end of function
 	return;
 }
 //
@@ -192,9 +210,9 @@ void name_input(char **player1_name,char **player2_name,char *sym)
 	//If the user has entered 0 will convert 
 	//sym to O to avoid problems elsewhere in
 	//the code
-	if((**sym)=='0')
+	if((*sym)=='0')
 	{
-		**sym='O';
+		*sym='O';
 	}
 	//Inputs Player 2 name
 	printf("\nPlayer 2, Please Enter your Name : ");
@@ -213,6 +231,7 @@ int _toss(char* player1_name,char* player2_name)
 	result=rand()%2;
 	//result of toss is printed
 	printf("\n\nThe Result of the Toss : ");
+	//based on the toss, result is printed with the player name
 	switch(result)
 	{
 		case 0:printf("%s wins the toss!!!\n",player1_name);
@@ -220,18 +239,27 @@ int _toss(char* player1_name,char* player2_name)
 		case 1:printf("%s wins the toss!!!\n",player2_name);
 			   break;
 	}
+	//function returns the result
+	//end of function
 	return result;
 }
-
+//
+//initialize_array() this function initialises the array with underscores(_)
 void initialize_array(char ***game_array)
 {
+	//memory is allocated to create a array of pointers of size 3
 	*game_array=(char **)malloc(sizeof(char *)*3);
 	int i;
+	//each pointer in the array gets pointed to an one-dimesional 
+	//array of "char" type with size 3 
 	for(i=0;i<3;i++)
 	{
 		*((*game_array)+i)=(char *)malloc(sizeof(char)*3);
 	}
+	//initialization loop
 	int j;
+	//variable 'i' is for rows
+	//variable 'j' is for columns
 	for(i=0;i<3;i++)
 	{
 		for(j=0;j<3;j++)
@@ -239,24 +267,41 @@ void initialize_array(char ***game_array)
 			*(*((*game_array)+i)+j)='_';
 		}
 	}
+	//end of function
 	return;
 }
-
+//
+//print_game_array() function us used to print game_array
 void print_game_array(char **game_array)
 {
+	//variable 'i' is for rows
+	//variable 'j' is for columns
 	int i,j;
+	//prints the column wise numbering
+	printf("\n\n  1 2 3\n");
+	//loop to print the game_array
 	for(i=0;i<3;i++)
 	{
-		printf("\n");
+		//below printf prints the row wise numbering
+		if(i==0)
+		{
+			printf("%d ",i+1);
+		}
+		//main loop
 		for(j=0;j<3;j++)
 		{
 			printf("%c ",*(*(game_array+i)+j));
 		}
+		//"\n" escape sequence character to indicate new row
+		printf("\n");
 	}
+	//end of function
 	printf("\n");
 	return;
 }
-
+//
+//run_game() function lets the player decide on which positon to play 
+//their next move on and inserts it into the game array
 void run_game(char ***game_array,char sym,int chance,char *player1_name,char *player2_name)
 {
 	int i,j;
@@ -271,23 +316,43 @@ void run_game(char ***game_array,char sym,int chance,char *player1_name,char *pl
 	switch(chance)
 	{
 		case 0: printf("\n%s, Please enter the position where you want make your next move\n",player1_name);
-				printf("Please enter row number : ");
-				scanf(" %d",&i);
-				printf("Please enter column number : ");
-				scanf(" %d",&j);
-				*(*((*game_array)+i)+j)=player1_sym;
-				return;
+				break;
 		case 1: printf("\n%s, Please enter the position where you want make your next move\n",player2_name);
-				printf("Please enter row number : ");
-				scanf(" %d",&i);
-				printf("Please enter column number : ");
-				scanf(" %d",&j);
-				*(*((*game_array)+i)+j)=player2_sym;
+				break;
+	}
+	int flag=1;
+	while(flag!=0)
+	{
+		printf("Please enter row number : ");
+		scanf(" %d",&i);
+		i=i-1;
+		printf("Please enter column number : ");
+		scanf(" %d",&j);
+		j=j-1;
+		if(i>2 || j>2)
+		{
+			flag=1;
+			printf("\nInvalid Positon Chosen!!!\nThat position does not exist. Please choose a valid position.\n\n");
+			continue;
+		}
+		if(*(*((*game_array)+i)+j)=='X' || *(*((*game_array)+i)+j)=='O')
+		{
+			flag=1;
+			printf("\nInvalid Positon Chosen!!!\nThat position is already occupied. Please choose a valid position.\n\n");
+		}
+		flag=0;
+	}
+	switch(chance)
+	{
+		case 0: *(*((*game_array)+i)+j)=player1_sym;
+				return;
+		case 1:*(*((*game_array)+i)+j)=player2_sym;
 				return;
 	}
 	return;
 }
-
+//
+//This function check if the game array is full or not to detect a draw situation
 int check_end(char **game_array)
 {
 	int i,j;
@@ -303,7 +368,11 @@ int check_end(char **game_array)
 	}
 	return 1;
 }
-
+//This function checks for a win situtation
+//check() functions contains the actual code to check for a win situation.
+//Options are:-
+//1. 1 to trigger to check who has won, and
+//2. Any other number to check if there is a win situation
 char check_win(char **game_array,int option)
 {
 	if(option==0)
@@ -329,7 +398,9 @@ char check_win(char **game_array,int option)
 		}
 	}
 }
-
+//
+//This function contains the actual code to 
+//check for a win situation
 int check(char **game_array,char sym)
 {
 	// --> i is used for row
@@ -352,6 +423,28 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
+		}
+	}
+	if(flag==1)
+	{
+		return 1;
+	}
+	//The middle column
+	// X |X| X
+	// X |X| X
+	// X |X| X
+	flag=0;
+	for(j=0;j<3;j++)
+	{
+		if(*(*(game_array+1)+j)==sym)
+		{
+			flag=1;
+		}
+		else
+		{
+			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
@@ -372,6 +465,7 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
@@ -392,6 +486,7 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
@@ -412,6 +507,7 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
@@ -432,6 +528,7 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
@@ -452,6 +549,7 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
@@ -472,6 +570,7 @@ int check(char **game_array,char sym)
 		else
 		{
 			flag=0;
+			break;
 		}
 	}
 	if(flag==1)
