@@ -17,7 +17,7 @@
 | 7 |    void  | print_game_array() | char \*\*  | game_array   | This prints the game array. |
 | 8 |    void  |   run_game()      | char \*\*\*, char , int, char \*, char \* | &game_array , \*sym, chance, player1_name, player2_name|This function lets the player decide on which positon to play their next move on and inserts it into the game array.|
 | 9|     int   |   check_end()     |  char \*\* | game_array | This function check if the game array is full or not to detect a draw situation. |
-| 10|    char  |   check_win()     |  char \*\*, int | game_array, Option(A Number)</br>1. 1 to trigger to check who has won, and</br>2. Any other number to check if there is a win situation| This function checks for a win situtation</br>check() functions contains the actual code to check for a win situation. |
+| 10|    char  |   check_win()     |  char \*\*, int | game_array, Option(A Number)| This function checks for a win situtation</br>check() functions contains the actual code to check for a win situation.</br>Options are:-</br>1. 1 to trigger to check who has won, and</br>2. Any other number to check if there is a win situation|
 | 11|    int   |   check()         | char \*\*, char | game_array, sym | This function contains the actual code to check for a win situation. |
 <!--============================================ TABLE END ====================================================-->
 #### NOTES ####
