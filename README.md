@@ -2,8 +2,9 @@
 |S.No|Projects|Comments|
 |:--:|:------:|:------:|
 |1|Tic Tac Toe Game|Without Graphics|
-|2|Text Editor|Without any Data Structure|
-|3|Text Editor|Using Hash Tables|
+|2|Matrix Rotation Layer-wise|None|
+|3|Text Editor|Without any Data Structure|
+|4|Text Editor|Using Hash Tables|
 
 ## Description ##
 ## 1.Tic Tac Toe ##
@@ -29,4 +30,4 @@
 1. Leaderboard
 2. Save Game Feature
 3. Resume Game
-## 2. Text Editor ##
+## 2. Matrix Rotation Layer-wise ##
