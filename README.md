@@ -25,4 +25,8 @@
 #### NOTES ####
 1. check() and check_win() is kept separate to make the code more readable, check() contains the actual code.
 2. Due to high probability of 0 than 1 in rand()%2, most of the times 2nd player will win the toss.
+#### Features to be Added ####
+1. Leaderboard
+2. Save Game Feature
+3. Resume Game
 ## 2. Text Editor ##
