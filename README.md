@@ -6,6 +6,7 @@
 |3|Text Editor|Using Hash Tables|
 
 ## Description ##
+</hr>
 ## 1.Tic Tac Toe ##
 <!--============================================ TABLE ====================================================-->
 |S.No|Return Type|Function Name|Argument Type|Arguments/Parameters(Actual Parameters)|Purpose|
@@ -25,4 +26,5 @@
 #### NOTES ####
 1. check() and check_win() is kept separate to make the code more readable, check() contains the actual code.
 2. Due to high probability of 0 than 1 in rand()%2, most of the times 2nd player will win the toss.
+</hr>
 ## 2. Text Editor ##
