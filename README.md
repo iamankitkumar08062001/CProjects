@@ -5,6 +5,7 @@
 
 ## Description ##
 ## 1.Tic Tac Toe ##
+## 2. Text Editor ##
 <!--============================================ TABLE ====================================================-->
 |S.No|Return Type|Function Name|Argument Type|Arguments/Parameters(Actual Parameters)|Purpose|
 |:--:|:---------:|:-----------:|:------------|:-------------------------------------:|-----|
