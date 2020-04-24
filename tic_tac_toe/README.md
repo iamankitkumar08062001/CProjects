@@ -1,9 +1,9 @@
-#PROJECTS#
+# PROJECTS #
 |S.No|Project Name|Source Code File Name|Comments|
 |:--:|:----------:|:-------------------:|:------:|
 |1|Tic Tac Toe|tic_tac_toe.c|Without Graphics|
 
-## Description ##
+## DESCRIPTION ##
 ## 1.Tic Tac Toe ##
 <!--============================================ TABLE ====================================================-->
 |S.No|Return Type|Function Name|Argument Type|Arguments/Parameters(Actual Parameters)|Purpose|
