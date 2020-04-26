@@ -5,18 +5,18 @@
 
 /*----------------------ARRANGEMENT MODEL-----------------------------
                      --NULL--
-					    |
-					    |
+			|
+			|
                  -----home--------
                  /     \         \
-				/       \         \
-			 folder1--->folder2-->folder3-->NULL
-			 /      \
-			/         \
-		  sub-folder1-->sub-folder2-->NULL
-		    |              |
-			|              |
-		   NULL          NULL
+		/       \         \
+	    folder1--->folder2-->folder3-->NULL
+	         /      \
+		/         \
+       sub-folder1-->sub-folder2-->NULL
+            |              |
+       	    |              |
+           NULL          NULL
 */
 //this is a attempt to make linux file system tree(loose re-creation) using
 //left-child, right-sibling representation of a tree
