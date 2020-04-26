@@ -55,11 +55,11 @@ typedef struct node node;
 //3.rm -R
 
 //functions
-void current_dir(node *);                 //main_function
-void init(node *,char *,node *);         //to initialise a node
-void print_children(node *,int);        //ls -R and ls
-void add_folder(node *,char *);        //mkdir
-void navigate_to(node *);             // cd
+void current_dir(node *);                   //main_function
+void init(node *,char *,node *);           //to initialise a node
+void print_children(node *,int);          //ls -R and ls
+void add_folder(node *,char *);          //mkdir
+void navigate_to(node *,char *);        // cd
 
 int main()
 {
@@ -103,6 +103,16 @@ void current_dir(node *dir)
 				continue;
 			}
 			add_folder(dir,command+6);
+			NEW_CONTINUE(command);
+		}
+		if(strstr(command,"cd")!=NULL)
+		{
+			if(*(command+3)=='\0')
+			{
+				printf("\nENTER A VALID FOLDER NAME!!!");
+				continue;
+			}
+			navigate_to(dir,command+4);
 			NEW_CONTINUE(command);
 		}
 	}
@@ -173,25 +183,37 @@ void add_folder(node *dir,char *folder_name)
 	return;
 }
 
+void navigate_to(node *dir,char *folder_name)
+{
+	if(strcmp(folder_name,".")==0)
+	{
+		return;
+	}
+	if(strcmp(folder_name,"..")==0)
+	{
+		if(dir->parent)
+		{
+			return;
+		}
+		else
+		{
+			current_dir(dir->parent);
+			return;
+		}
+	}
+	node *temp=dir->left_child;
+	while(temp!=NULL)
+	{
+		if(strcmp(temp->dir_name,folder_name)==0)
+		{
+			current_dir(temp);
+			return;
+		}
+		temp=temp->right_sibling;
+	}
+	printf("\n\nINVALID FOLDER NAME!!!\n\n");
+	return;
+}
+
 //debugging line
 //	printf("****************CHECK********************");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
