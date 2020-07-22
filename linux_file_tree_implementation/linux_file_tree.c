@@ -214,6 +214,3 @@ void navigate_to(node *dir,char *folder_name)
 	printf("\n\nINVALID FOLDER NAME!!!\n\n");
 	return;
 }
-
-//debugging line
-//	printf("****************CHECK********************");
