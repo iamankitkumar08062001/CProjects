@@ -1,4 +1,4 @@
-# Projects
+# C Language Projects #
 |S.No|Projects|Folder Name|Status|
 |:--:|:------:|:---------:|:--:|
 |1|Tic Tac Toe Game|tic_tac_toe|Working!|
